@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Analysis</title>
+    {% load static %}
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script>
+        function formatJSON(jsonString) {
+            const data = JSON.parse(jsonString);
+            const report = data.identification_report;
+            let html = `
+                <h2>${report.disease_name}</h2>
+                <p><strong>Plant:</strong> ${report.plant_name}</p>
+                <p><strong>Description:</strong> ${report.description}</p>
+                <p><strong>Diagnosis:</strong> ${report.diagnosis}</p>
+                <h3>Symptoms:</h3>
+                <ul>
+                    ${report.symptoms.map(symptom => `<li>${symptom}</li>`).join('')}
+                </ul>
+                <h3>Management Tips:</h3>
+                <ul>
+                    ${report.management_tips.map(tip => `<li>${tip}</li>`).join('')}
+                </ul>
+                <p><strong>Notes:</strong> ${report.notes}</p>
+            `;
+            return html;
+        }
+    </script>
+</head>
+<body>
+    <h1>Plant Disease Analysis</h1>
+    <img src="{{ image.image.url }}" alt="Analyzed Plant Image">
+    <div id="analysis"></div>
+    <script>
+        document.getElementById('analysis').innerHTML = formatJSON('{{ image.analysis|escapejs }}');
+    </script>
+    <a href="{% url 'upload_image' %}">Analyze Another Image</a>
+</body>
+</html>
