@@ -1,0 +1,2 @@
+# PlantsAgents
+Django-AI
