@@ -2,7 +2,7 @@ import requests
 import base64
 import json
 from django.conf import settings
-from .Stadard_responses import Scientist_response
+from .Standard_responses import Scientist_response
 
 def analyze_image(image_path):
     standard_response = Scientist_response #json.dumps(Scientist_response, indent=2)

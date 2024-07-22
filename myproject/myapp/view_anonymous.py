@@ -2,7 +2,7 @@ import requests
 import base64
 import json
 from django.conf import settings
-from .Stadard_responses import Anonymous_response
+from .Standard_responses import Anonymous_response
 
 def analyze_image(image_path: str):
     standard_response = Anonymous_response

@@ -2,7 +2,7 @@ import requests
 import base64
 import json
 from django.conf import settings
-from .Stadard_responses import Farmer_response
+from .Standard_responses import Farmer_response
 
 def analyze_image(image_path: str) -> str:
     standard_response = json.dumps(Farmer_response, indent=2)
