@@ -5,7 +5,7 @@ from django.conf import settings
 from .Standard_responses import Farmer_response
 
 def analyze_image(image_path: str) -> str:
-    standard_response = json.dumps(Farmer_response, indent=2)
+    standard_response = Farmer_response
 
     try:
         with open(image_path, "rb") as image_file:
